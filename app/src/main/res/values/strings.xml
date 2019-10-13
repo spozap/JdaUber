@@ -13,4 +13,7 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="user_hint">Usuario</string>
+    <string name="pass_hint">Contraseña</string>
+    <string name="login">Acceder</string>
 </resources>
