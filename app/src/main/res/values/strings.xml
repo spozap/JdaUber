@@ -15,5 +15,7 @@
     <string name="menu_send">Send</string>
     <string name="user_hint">Usuario</string>
     <string name="pass_hint">Contraseña</string>
-    <string name="login">Acceder</string>
+    <string name="welcome_driver">Soy conductor</string>
+    <string name="welcome_user">Soy pasajero</string>
+    <string name="login">Accede</string>
 </resources>
