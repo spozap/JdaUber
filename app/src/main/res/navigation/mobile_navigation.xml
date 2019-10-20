@@ -8,36 +8,30 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.uberapp.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_map"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.uberapp.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_history"
+        android:name="com.example.uberapp.ui.history.HistoryFragment"
+        android:label="Historial"
+        tools:layout="@layout/fragment_history" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.uberapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_settings"
+        android:name="com.example.uberapp.ui.settings.SettingsFragment"
+        android:label="Ajustes"
+        tools:layout="@layout/fragment_settings" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.uberapp.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:id="@+id/nav_promo"
+        android:name="com.example.uberapp.ui.promo.PromoFragment"
+        android:label="Promociones"
+        tools:layout="@layout/fragment_promo" />
 
     <fragment
         android:id="@+id/nav_share"
         android:name="com.example.uberapp.ui.share.ShareFragment"
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_share" />
-
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.uberapp.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
 </navigation>

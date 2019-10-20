@@ -7,14 +7,28 @@
     android:layout_height="match_parent"
     android:background="#42EA0C">
 
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="155dp"
+        android:layout_height="147dp"
+        android:layout_marginBottom="48dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toTopOf="@+id/textUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@mipmap/ic_carlogo" />
+
     <EditText
         android:id="@+id/textUser"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:hint="@string/user_hint"
-        android:textSize="20sp"
         android:importantForAutofill="no"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
