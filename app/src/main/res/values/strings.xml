@@ -22,4 +22,5 @@
 
     <string name="actual_ubi">Ubicación actual</string>
     <string name="dest_ubi">Ubicación de destino</string>
+    <string name="map_example">Ejemplo de mapa</string>
 </resources>
