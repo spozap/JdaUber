@@ -8,6 +8,7 @@ public class PromoViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
+
     public PromoViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is promo fragment");

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgexample"
+            android:layout_width="400px"
+            android:layout_height="400px"
+            android:src="@drawable/test">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/txtUbiAct"
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@id/imgexample"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/txtUbiDest"
+            android:layout_width="match_parent"
+            android:layout_below="@id/txtUbiAct"
+            android:layout_toRightOf="@id/imgexample"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/txtFechaAct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imgexample"
+            android:layout_below="@id/txtUbiDest"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
