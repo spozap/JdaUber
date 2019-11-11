@@ -1,22 +1,25 @@
 package com.example.uberapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Toast;
 
-import com.example.uberapp.ui.share.ShareFragment;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Login extends AppCompatActivity {
 
     private Button login;
-    private TextView user;
-    private TextView pass;
+    private EditText user;
+    private EditText pass;
     private TextView tries;
     private int intentos = 3;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,15 +30,22 @@ public class Login extends AppCompatActivity {
         pass = findViewById(R.id.textPassword);
         tries = findViewById(R.id.textTries);
 
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateLogin(user.getText().toString(),pass.getText().toString());
+                String us = user.getText().toString();
+                String pa = pass.getText().toString();
+                //saveUser(us,pa);
+                boolean id = checkUser(us,pa);
+                if (id){
+                    Intent intent = new Intent(Login.this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(Login.this,"Usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
-
 
     public void validateLogin(String userTxt,String userPasswd){
         if(userTxt.equals("admin") && userPasswd.equals("1234")){
@@ -66,4 +76,52 @@ public class Login extends AppCompatActivity {
         this.intentos = intentos;
     }
 
+    public void saveUser(String username,String password) {
+        ContentValues values = new ContentValues();
+
+        values.put("Username",username);
+        values.put("Password",password);
+        values.put("UserType","User");
+
+        bbdd bbdd= new bbdd(this);
+        SQLiteDatabase db = bbdd.getWritableDatabase();
+
+        db.insert("Users",null,values);
+        db.close();
+    }
+
+    public boolean checkUser(String username,String password){
+
+
+        bbdd bbdd = new bbdd(this);
+        SQLiteDatabase db = bbdd.getWritableDatabase();
+
+        // Columna que se espera que retorne el select
+        String[] columnas = {"IDUsername"};
+
+        //La columna en la que va a ir a buscar el where , el ? se reemplaza por el valor que se pasa luego
+        String select = "Username = ? and Password=?";
+
+        // Argumento que se va a pasar al WHERE
+        String[] selectArgs = {username,password};
+
+        Cursor c = db.query("Users",
+                columnas,
+                select,
+                selectArgs,
+                null,
+                null,
+                null
+                );
+        int count = c.getCount();
+        c.close();
+        db.close();
+
+        if (count > 0){
+            return  true;
+        } else {
+            return false;
+        }
+
+    }
 }

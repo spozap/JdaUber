@@ -3,6 +3,7 @@ package com.example.uberapp;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,7 +13,6 @@ import java.util.List;
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.AdapterHistory> {
 
     List<History> histories;
-
     public HistoryAdapter(List<History> histories){
         this.histories = histories;
     }
@@ -22,7 +22,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.AdapterH
         TextView ubiact;
         TextView ubidest;
         TextView fechact;
-
 
         public AdapterHistory(View row_history) {
            super(row_history);
@@ -56,5 +55,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.AdapterH
     public void onAttachedToRecyclerView(RecyclerView rv){
         super.onAttachedToRecyclerView(rv);
     }
-    
+
+
 }

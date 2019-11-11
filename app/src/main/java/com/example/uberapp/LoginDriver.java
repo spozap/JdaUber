@@ -1,6 +1,8 @@
 package com.example.uberapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,7 +32,9 @@ public class LoginDriver extends AppCompatActivity {
         btnLoginDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateLoginDriver(userDriver.getText().toString(),passDriver.getText().toString());
+                Users u = new Users(userDriver.getText().toString(),passDriver.getText().toString());
+                saveDriver(u);
+                //validateLoginDriver(userDriver.getText().toString(),passDriver.getText().toString());
             }
         });
 
@@ -57,6 +61,21 @@ public class LoginDriver extends AppCompatActivity {
         }
     }
 
+
+    public void saveDriver(Users us) {
+        ContentValues values = new ContentValues();
+
+        values.put("Username",us.getUsername());
+        values.put("Password",us.getPassword());
+        values.put("UserType","Driver");
+
+        bbdd bbdd= new bbdd(this);
+        SQLiteDatabase db = bbdd.getWritableDatabase();
+
+        db.insert("Users",null,values);
+        db.close();
+
+    }
     public int getIntentos() {
         return intentos;
     }

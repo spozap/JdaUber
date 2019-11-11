@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import java.util.List;
 public class HistoryFragment extends Fragment {
 
     private HistoryViewModel HistoryViewModel;
+    LinearLayout ll;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         HistoryViewModel =
@@ -45,7 +47,9 @@ public class HistoryFragment extends Fragment {
         HistoryAdapter ha = new HistoryAdapter(histories);
         rv.setAdapter(ha);
         return root;
+
     }
+
 
 
 }
