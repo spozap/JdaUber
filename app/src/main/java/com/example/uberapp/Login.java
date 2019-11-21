@@ -12,6 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+
+import com.example.uberapp.databases.bbdd;
 
 public class Login extends AppCompatActivity {
 
@@ -20,23 +23,24 @@ public class Login extends AppCompatActivity {
     private EditText pass;
     private TextView tries;
     private int intentos = 3;
+    private LoginViewModel loginViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
-
         login = findViewById(R.id.btnLogin);
         user = findViewById(R.id.textUser);
         pass = findViewById(R.id.textPassword);
         tries = findViewById(R.id.textTries);
+
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String us = user.getText().toString();
                 String pa = pass.getText().toString();
-                //saveUser(us,pa);
-                boolean id = checkUser(us,pa);
+                boolean id = loginViewModel.checkIfLoginIsCorrect(us,pa);
                 if (id){
                     Intent intent = new Intent(Login.this, MainActivity.class);
                     startActivity(intent);

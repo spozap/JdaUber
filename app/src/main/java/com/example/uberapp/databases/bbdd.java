@@ -1,4 +1,4 @@
-package com.example.uberapp;
+package com.example.uberapp.databases;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

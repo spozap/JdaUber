@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+        <TextView
+            android:id="@+id/txtFrom"
+            android:text="Desde "
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="10dp"/>
+        <TextView
+            android:id="@+id/showFrom"
+            android:layout_width="match_parent"
+            android:layout_below="@id/txtFrom"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/txtDest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/showFrom"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="Hasta"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:paddingBottom="10dp"/>
+        <TextView
+            android:id="@+id/showDest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/txtDest"
+            android:text="" />
+        <TextView
+            android:id="@+id/txtKm"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Kilometros recorridos :"
+            android:textSize="20dp"
+            android:layout_below="@id/showDest" />
+        <TextView
+            android:id="@+id/showKm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/showDest"
+            android:textSize="20dp"
+            android:layout_toRightOf="@id/txtKm"
+            android:text="" />
+        <TextView
+            android:id="@+id/txtMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/showKm"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Mapa del recorrido : "/>
+        <ImageView
+            android:layout_below="@id/txtMap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/mapa1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="20dp"/>
+    </RelativeLayout>
+</LinearLayout>

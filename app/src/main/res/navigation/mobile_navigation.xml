@@ -10,28 +10,29 @@
         android:name="com.example.uberapp.ui.home.HomeFragment"
         android:label="@string/menu_map"
         tools:layout="@layout/fragment_home" />
-
     <fragment
         android:id="@+id/nav_history"
         android:name="com.example.uberapp.ui.history.HistoryFragment"
         android:label="Historial"
         tools:layout="@layout/fragment_history" />
-
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.example.uberapp.ui.settings.SettingsFragment"
         android:label="Ajustes"
         tools:layout="@layout/fragment_settings" />
-
     <fragment
         android:id="@+id/nav_promo"
         android:name="com.example.uberapp.ui.promo.PromoFragment"
         android:label="Promociones"
         tools:layout="@layout/fragment_promo" />
-
     <fragment
         android:id="@+id/nav_share"
         android:name="com.example.uberapp.ui.share.ShareFragment"
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_share" />
+    <fragment
+        android:id="@+id/rvDetails"
+        android:name="com.example.uberapp.ui.details.DetailsFragment"
+        tools:layout="@layout/rv_details" />
+
 </navigation>

@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+
+import com.example.uberapp.databases.bbdd;
 
 public class LoginDriver extends AppCompatActivity {
 
@@ -17,12 +20,15 @@ public class LoginDriver extends AppCompatActivity {
     private TextView passDriver;
     private TextView tries;
     private int intentos = 3;
+    LoginDriverViewModel loginDriverViewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_driver);
 
+        loginDriverViewModel = ViewModelProviders.of(this).get(LoginDriverViewModel.class);
 
         btnLoginDriver = findViewById(R.id.btnLogin);
         userDriver = findViewById(R.id.txtUserDriver);
@@ -32,33 +38,19 @@ public class LoginDriver extends AppCompatActivity {
         btnLoginDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Users u = new Users(userDriver.getText().toString(),passDriver.getText().toString());
-                saveDriver(u);
-                //validateLoginDriver(userDriver.getText().toString(),passDriver.getText().toString());
+               // Users u = new Users(userDriver.getText().toString(),passDriver.getText().toString());
+                String username = userDriver.getText().toString();
+                String password = passDriver.getText().toString();
+                boolean is = loginDriverViewModel.checkIfLoginIsCorrect(username,password);
+                if (is == true){
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(LoginDriver.this,"Usuario o contraseña incorrecto",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
-    }
-
-    public void validateLoginDriver(String DriverTxt, String DriverPasswd){
-        if(DriverTxt.equals("admin") && DriverPasswd.equals("1234")){
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } else {
-            CheckIntentos(intentos);
-        }
-    }
-
-    public void CheckIntentos(int ints){
-        ints = getIntentos();
-        if (ints > 1) {
-            ints--;
-            tries.setText("Tienes "+ints+" intentos disponibles");
-            setIntentos(ints);
-        } else {
-            btnLoginDriver.setEnabled(false); // Desactivar el boton de login
-            tries.setText("Te has quedado sin intentos , intentalo más tarde");
-        }
     }
 
 
