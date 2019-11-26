@@ -6,7 +6,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
+    <string name="register_button">Registrarse</string>
     <string name="menu_map">Mapa</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
@@ -19,6 +19,8 @@
     <string name="welcome_driver">Soy conductor</string>
     <string name="welcome_user">Soy pasajero</string>
     <string name="login">Accede</string>
+    <string name="is_driver">Soy conductor</string>
+    <string name="is_user">Soy usuario</string>
 
     <string name="actual_ubi">Ubicación actual</string>
     <string name="dest_ubi">Ubicación de destino</string>

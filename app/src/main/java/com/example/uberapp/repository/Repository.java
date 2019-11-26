@@ -40,6 +40,19 @@ public class Repository {
 
     // Metodos (necesitaré utilizar el contexto!!)
 
+
+    public static void registerUser(String user, String passwd){
+
+
+
+    }
+
+    public static void registerDriver(String user, String passwd){
+
+
+
+    }
+
     public static boolean checkUserForUsers(String user,String passwd){
         // Valor que devolverá el select
         String[] columns = {"IDUsername"};

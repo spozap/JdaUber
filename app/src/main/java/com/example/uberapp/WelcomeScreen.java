@@ -10,6 +10,7 @@ public class WelcomeScreen extends AppCompatActivity {
 
     private Button btnUser;
     private Button btnDriver;
+    private Button btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,7 @@ public class WelcomeScreen extends AppCompatActivity {
 
         btnUser = findViewById(R.id.btnUser);
         btnDriver = findViewById(R.id.btnDriver);
+        btnRegister = findViewById(R.id.btnRegister);
 
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +34,13 @@ public class WelcomeScreen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(),LoginDriver.class);
                 startActivity(intent);
+            }
+        });
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
