@@ -9,7 +9,7 @@ public class bbdd extends SQLiteOpenHelper {
     // Info base de datos
 
     private static final String DATABASE_NAME = "uberapp.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
 
     // Tablas
@@ -70,4 +70,5 @@ public class bbdd extends SQLiteOpenHelper {
             onCreate(sqLiteDatabase);
         }
     }
+
 }

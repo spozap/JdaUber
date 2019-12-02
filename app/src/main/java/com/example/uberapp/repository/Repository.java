@@ -54,6 +54,7 @@ public class Repository {
     }
 
     public static boolean checkUserForUsers(String user,String passwd){
+
         // Valor que devolverá el select
         String[] columns = {"IDUsername"};
 
@@ -73,7 +74,7 @@ public class Repository {
 
         int count = c.getCount();
         c.close();
-        db.close();
+        //db.close();
 
         if(count > 0){
             return true;
@@ -104,7 +105,7 @@ public class Repository {
 
         int count = c.getCount();
         c.close();
-        db.close();
+        //db.close();
 
         if (count > 0){
             return true;

@@ -41,6 +41,8 @@ public class LoginDriver extends AppCompatActivity {
                // Users u = new Users(userDriver.getText().toString(),passDriver.getText().toString());
                 String username = userDriver.getText().toString();
                 String password = passDriver.getText().toString();
+                Users u = new Users(username,password);
+                saveDriver(u);
                 boolean is = loginDriverViewModel.checkIfLoginIsCorrect(username,password);
                 if (is == true){
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
