@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.uberapp.databases.bbdd;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginDriver extends AppCompatActivity {
 
