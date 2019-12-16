@@ -65,13 +65,30 @@ public class Repository {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
+                            Log.d("Firebase", "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Intent i = new Intent(activity.getBaseContext(),MainActivity.class);
+                            activity.startActivity(i);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Log.w("Firebase", "createUserWithEmail:failure", task.getException());
+                        }
+                    }
+                });
+    }
 
-
+    public static void loginDriverInFirebase(Activity activity,String username,String password){
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword(username,password)
+                .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            Log.d("Firebase","loginDriver:success");
+                            Intent i = new Intent(activity.getBaseContext(),MainActivity.class);
+                            activity.startActivity(i);
+                        } else {
+                            Log.w("Firebase","loginDriver:failure");
                         }
                     }
                 });

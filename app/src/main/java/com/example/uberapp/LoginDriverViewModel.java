@@ -1,5 +1,7 @@
 package com.example.uberapp;
 
+import android.app.Activity;
+
 import androidx.lifecycle.ViewModel;
 
 import com.example.uberapp.repository.Repository;
@@ -21,5 +23,8 @@ public class LoginDriverViewModel extends ViewModel {
         } else {
             return false;
         }
+    }
+    public void loginDriverInFirebase(Activity activity,String username,String password){
+        Repository.loginDriverInFirebase(activity,username,password);
     }
 }

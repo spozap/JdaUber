@@ -41,19 +41,20 @@ public class LoginDriver extends AppCompatActivity {
                 String username = userDriver.getText().toString();
                 String password = passDriver.getText().toString();
                 Users u = new Users(username,password);
-                saveDriver(u);
-                boolean is = loginDriverViewModel.checkIfLoginIsCorrect(username,password);
-                if (is == true){
+                //saveDriver(u);
+                //boolean is = loginDriverViewModel.checkIfLoginIsCorrect(username,password);
+                loginDriverViewModel.loginDriverInFirebase(LoginDriver.this,
+                        username,password);
+                /*if (is == true){
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(LoginDriver.this,"Usuario o contraseña incorrecto",Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
         });
 
     }
-
 
     public void saveDriver(Users us) {
         ContentValues values = new ContentValues();
@@ -69,6 +70,7 @@ public class LoginDriver extends AppCompatActivity {
         db.close();
 
     }
+
     public int getIntentos() {
         return intentos;
     }
