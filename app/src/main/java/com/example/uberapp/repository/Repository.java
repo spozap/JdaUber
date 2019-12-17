@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -18,21 +17,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 public class Repository {
 
     private Context context;
     public static FirebaseAuth mAuth;
-
     //singleton
     private static Repository srepository;
     public static SQLiteDatabase db; // Variable para consultar siempre a la base de datos
-
+    private static FirebaseDatabase firebaseDatabase;
 
     private Repository(Context context){
 
@@ -40,6 +38,7 @@ public class Repository {
         bbdd bbdd = new bbdd(context);
         db = bbdd.getWritableDatabase();
         mAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
     public static Repository get(Context context){
@@ -66,7 +65,11 @@ public class Repository {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("Firebase", "createUserWithEmail:success");
+
                             FirebaseUser user = mAuth.getCurrentUser();
+                            String UID = mAuth.getUid();
+                            DatabaseReference ref = firebaseDatabase.getReference().child("Usuarios");
+                            ref.child(UID).child("Correo").setValue(username);
                             Intent i = new Intent(activity.getBaseContext(),MainActivity.class);
                             activity.startActivity(i);
                         } else {
