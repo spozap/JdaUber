@@ -26,8 +26,12 @@
     <string name="dest_ubi">Ubicación de destino</string>
     <string name="map_example">Ejemplo de mapa</string>
     <string name="message_screen">Enviar mensaje</string>
+    <string name="receive_message_screen">Recibir mensaje</string>
     <string name="insert_message">Escribe un mensaje</string>
     <string name="send">Enviar</string>
+    <string name="sent_by">Enviado por:</string>
+    <string name="subject">Asunto :</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
