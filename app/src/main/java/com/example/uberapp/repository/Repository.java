@@ -156,7 +156,6 @@ public class Repository {
         } else {
             return false;
         }
-
     }
 
     public static List<History> getHistories(){
