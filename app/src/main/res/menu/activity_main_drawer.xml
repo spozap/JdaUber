@@ -20,6 +20,14 @@
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="@string/menu_settings" />
+        <item
+            android:id="@+id/nav_send_message"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/message_screen" />
+        <item
+            android:id="@+id/nav_receive_message"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/receive_message_screen" />
     </group>
 
     <item android:title="Comunicación">

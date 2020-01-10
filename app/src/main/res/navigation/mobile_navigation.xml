@@ -34,5 +34,12 @@
         android:id="@+id/rvDetails"
         android:name="com.example.uberapp.ui.details.DetailsFragment"
         tools:layout="@layout/rv_details" />
-
+    <fragment
+        android:id="@+id/nav_send_message"
+        android:name="com.example.uberapp.sendFragment"
+        tools:layout="@layout/send_message"/>
+    <fragment
+        android:id="@+id/nav_receive_message"
+        android:name="com.example.uberapp.receiveFragment"
+        tools:layout="@layout/receive_message"/>
 </navigation>
