@@ -6,21 +6,25 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.uberapp.History;
 import com.example.uberapp.MainActivity;
+import com.example.uberapp.Message;
 import com.example.uberapp.databases.bbdd;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Repository {
@@ -41,16 +45,16 @@ public class Repository {
         firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
+    public static void close_repository(){
+        db.close();
+    }
+
     public static Repository get(Context context){
 
         if(srepository == null){
             srepository = new Repository(context);
         }
         return srepository;
-    }
-
-    public static void close_repository(){
-        db.close();
     }
 
     // Metodos (necesitaré utilizar el contexto!!)
@@ -65,8 +69,6 @@ public class Repository {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("Firebase", "createUserWithEmail:success");
-
-                            FirebaseUser user = mAuth.getCurrentUser();
                             String UID = mAuth.getUid();
                             DatabaseReference ref = firebaseDatabase.getReference().child("Usuarios");
                             ref.child(UID).child("Correo").setValue(username);
@@ -95,6 +97,20 @@ public class Repository {
                         }
                     }
                 });
+    }
+    public static void sendMessage(String message){
+        // Hardcoded for now to send message to user with UID (eI6OxlucxKVrvbogEOlKtrmph5f2)
+        mAuth = FirebaseAuth.getInstance();
+        DatabaseReference ref = firebaseDatabase.getReference().child("Mensajes");
+        Message m = new Message(mAuth.getUid(),"eI6OxlucxKVrvbogEOlKtrmph5f2",message,actualDate());
+        ref.push().setValue(m);
+    }
+
+    public static String actualDate(){
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date d = new Date();
+        String date = df.format(d);
+        return date;
     }
 
     public static boolean checkUserForUsers(String user,String passwd){
