@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -18,8 +17,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -97,13 +99,6 @@ public class Repository {
                         }
                     }
                 });
-    }
-    public static void sendMessage(String message){
-        // Hardcoded for now to send message to user with UID (eI6OxlucxKVrvbogEOlKtrmph5f2)
-        mAuth = FirebaseAuth.getInstance();
-        DatabaseReference ref = firebaseDatabase.getReference().child("Mensajes");
-        Message m = new Message(mAuth.getUid(),"eI6OxlucxKVrvbogEOlKtrmph5f2",message,actualDate());
-        ref.push().setValue(m);
     }
 
     public static String actualDate(){

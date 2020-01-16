@@ -7,6 +7,8 @@ public class Message {
     String message;
     String date;
 
+    public Message(){}
+
     public Message(String transmitter, String receiver, String message, String date) {
         this.transmitter = transmitter;
         this.receiver = receiver;
