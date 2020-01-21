@@ -168,7 +168,6 @@ public class Repository {
             return false;
         }
     }
-
     public static List<History> getHistories(){
         List<History> histories = new ArrayList<>();
 

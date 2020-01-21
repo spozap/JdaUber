@@ -4,13 +4,12 @@ public class Users {
 
     private String username;
     private String password;
+    private String rol;
 
-    private boolean userType; // false = conductor , true = usuario
-
-
-    public Users(String user, String passwd) {
+    public Users(String user, String passwd, String rol) {
         this.username = user;
         this.password = passwd;
+        this.rol = rol;
 
     }
 
@@ -30,12 +29,11 @@ public class Users {
         this.password = password;
     }
 
-
-    public boolean isUserType() {
-        return userType;
+    public String getRol() {
+        return rol;
     }
 
-    public void setUserType(boolean userType) {
-        this.userType = userType;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }

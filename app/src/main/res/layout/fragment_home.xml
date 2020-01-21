@@ -22,11 +22,11 @@
         android:id="@+id/destUbi"
         android:layout_width="275dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="148dp"
         android:gravity="center"
         android:hint="@string/dest_ubi"
-        android:inputType="text"
         android:importantForAutofill="no"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -44,14 +44,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guia1"
-        app:layout_constraintVertical_bias="0.919" />
+        app:layout_constraintVertical_bias="0.387" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guia1"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="478dp" />
+        app:layout_constraintGuide_begin="474dp" />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/map_container"
@@ -64,6 +64,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </com.google.android.gms.maps.MapView>
+
+    <Button
+        android:id="@+id/btnTrip"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="76dp"
+        android:text="@string/tripBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/destUbi"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
