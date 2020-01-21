@@ -138,7 +138,6 @@ public class Repository {
         }
 
     }
-
     public static boolean checkLoginForDrivers(String user,String passwd){
 
         // Valor que devolverá el select
