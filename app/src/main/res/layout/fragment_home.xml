@@ -18,34 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/destUbi"
-        android:layout_width="275dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="148dp"
-        android:gravity="center"
-        android:hint="@string/dest_ubi"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/actualUbi"
-        android:layout_width="275dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="28dp"
-        android:gravity="center"
-        android:hint="@string/actual_ubi"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/destUbi"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guia1"
-        app:layout_constraintVertical_bias="0.387" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guia1"
         android:layout_width="match_parent"
@@ -57,17 +29,19 @@
         android:id="@+id/map_container"
         android:layout_width="396dp"
         android:layout_height="348dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toTopOf="@id/guia1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.603">
 
     </com.google.android.gms.maps.MapView>
 
     <Button
         android:id="@+id/btnTrip"
-        android:layout_width="175dp"
+        android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginBottom="76dp"
         android:text="@string/tripBtn"
@@ -75,8 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/destUbi"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/guia1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

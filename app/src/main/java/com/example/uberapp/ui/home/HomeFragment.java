@@ -33,11 +33,9 @@ import com.google.android.gms.tasks.Task;
 public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
     private HomeViewModel homeViewModel;
-    private EditText from,to;
     private Button btnTrip;
     private MapView mapView;
     private GoogleMap gMap;
-    SupportMapFragment mapFragment;
     Location currentLocation;
 
 
@@ -56,8 +54,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         if (savedInstanceState != null){
             mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
         }
-        from = root.findViewById(R.id.actualUbi);
-        to = root.findViewById(R.id.destUbi);
         btnTrip = root.findViewById(R.id.btnTrip);
         mapView = (MapView) root.findViewById(R.id.map_container);
         mapView.onCreate(mapViewBundle);
@@ -67,7 +63,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         btnTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                History h = new History(from.getText().toString(),to.getText().toString());
+                History h = new History("dummy data","dummy data");
                 homeViewModel.insertNewTrip(h);
             }
         });
