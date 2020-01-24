@@ -22,6 +22,13 @@
     <string name="is_driver">Soy conductor</string>
     <string name="is_user">Soy usuario</string>
 
+    <string name="from">Desde : </string>
+    <string name="to">Hasta :</string>
+    <string name="trip_resume">Resumen del viaje</string>
+    <string name="trip_price">Precio :</string>
+    <string name="trip_confirm">Confirmar viaje</string>
+    <string name="trip_km">Total Kms :</string>
+
     <string name="actual_ubi">Ubicación actual</string>
     <string name="dest_ubi">Ubicación de destino</string>
     <string name="map_example">Ejemplo de mapa</string>
