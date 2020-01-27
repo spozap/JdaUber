@@ -26,9 +26,12 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
@@ -55,7 +58,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
             mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
         }
         btnTrip = root.findViewById(R.id.btnTrip);
-        mapView = (MapView) root.findViewById(R.id.map_container);
+        mapView = root.findViewById(R.id.map_container);
         mapView.onCreate(mapViewBundle);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
         fetchLastLocation();
@@ -97,19 +100,33 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         gMap = googleMap;
-
+        ArrayList<Marker> listMarker = new ArrayList<>();
         LatLng actuaLng = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions().position(actuaLng).title("Estoy aqui");
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(actuaLng));
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(actuaLng,5));
         googleMap.addMarker(markerOptions);
 
+        gMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                //Posicionando el marcador y añadiendo el marcador
+                int count = 0;
 
+                Marker m = gMap.addMarker(new MarkerOptions().position(latLng));
+                listMarker.add(m);
+                if (listMarker.size() > 1){
+                        Marker remove = listMarker.get(0);
+                        listMarker.remove(0);
+                        remove.remove();
+                        count++;
+                }
+            }
+        });
     }
 
     @Override
