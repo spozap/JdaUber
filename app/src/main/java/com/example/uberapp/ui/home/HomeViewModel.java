@@ -15,6 +15,6 @@ public class HomeViewModel extends ViewModel {
         DatabaseReference tripRef = FirebaseDatabase.getInstance().getReference().child("Viajes").push();
         tripRef.setValue(trip);
 
-        FirebaseDatabase.getInstance().getReference().child("Usuarios").child(mAuth.getUid()).child("Viaje").setValue(tripRef.getKey());
+        FirebaseDatabase.getInstance().getReference().child("Usuarios").child(mAuth.getUid()).child("Viajes").push().setValue(tripRef.getKey());
     }
 }

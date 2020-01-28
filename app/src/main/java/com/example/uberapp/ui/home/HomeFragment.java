@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         btnTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                History h = new History("dummy data","dummy data");
+                History h = new History("","","dummy data","dummy data");
                 homeViewModel.insertNewTrip(h);
             }
         });

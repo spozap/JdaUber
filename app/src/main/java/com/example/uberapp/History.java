@@ -6,16 +6,24 @@ import java.util.Locale;
 
 public class History {
 
+    String pasajero;
+    String conductor;
     String UbicacionSalida;
     String UbicacionDestino;
     String FechaActual;
 
-    public History(String UbiAct, String UbiDest) {
+    public History(String conductor , String pasajero , String UbiAct, String UbiDest) {
         this.UbicacionDestino = UbiAct;
         this.UbicacionSalida = UbiDest;
+        this.conductor = conductor;
+        this.pasajero = pasajero;
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
         this.FechaActual = dateFormat.format(date);
+    }
+
+    public History(){
+
     }
 
     public String getUbicacionSalida() {
@@ -40,5 +48,21 @@ public class History {
 
     public void setFechaActual(String fechaActual) {
         FechaActual = fechaActual;
+    }
+
+    public String getPasajero() {
+        return pasajero;
+    }
+
+    public void setPasajero(String pasajero) {
+        this.pasajero = pasajero;
+    }
+
+    public String getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(String conductor) {
+        this.conductor = conductor;
     }
 }

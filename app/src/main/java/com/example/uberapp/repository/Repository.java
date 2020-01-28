@@ -170,12 +170,12 @@ public class Repository {
     public static List<History> getHistories(){
         List<History> histories = new ArrayList<>();
 
-        histories.add(new History("Calle San sebastián","La Maquinista"));
-        histories.add(new History("Glories","Diagonal Mar"));
-        histories.add(new History("Calle Gran de Sant Andreu","Heron City"));
-        histories.add(new History("asdasdasdasdsa","asdadad"));
-        histories.add(new History("fdgjfkdgjdfgdfl","sdlskjgskdj"));
-        histories.add(new History("dfkdjfkjsdf","hgfdjhgjdfhghfjd"));
+        histories.add(new History("","","Calle San sebastián","La Maquinista"));
+        histories.add(new History("","","Glories","Diagonal Mar"));
+        histories.add(new History("","","Calle Gran de Sant Andreu","Heron City"));
+        histories.add(new History("","","asdasdasdasdsa","asdadad"));
+        histories.add(new History("","","fdgjfkdgjdfgdfl","sdlskjgskdj"));
+        histories.add(new History("","","dfkdjfkjsdf","hgfdjhgjdfhghfjd"));
 
         return histories;
     }
