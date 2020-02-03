@@ -8,17 +8,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.AdapterHistory> {
     
-    static List<History> histories;
+    static ArrayList<History> histories;
     static NavController nv;
 
-    public HistoryAdapter(List<History> histories, NavController nv){
+    public HistoryAdapter(ArrayList<History> histories, NavController nv){
         this.histories = histories;
         this.nv = nv;
+    }
+
+    public void setLista(ArrayList<History> histories){
+        this.histories = histories;
     }
 
 

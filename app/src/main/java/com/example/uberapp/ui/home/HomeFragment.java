@@ -62,7 +62,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         mapView.onCreate(mapViewBundle);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
         fetchLastLocation();
-
         btnTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,8 +25,9 @@ import java.util.List;
 public class HistoryFragment extends Fragment {
 
     private HistoryViewModel HistoryViewModel;
-    LinearLayout ll;
     private HistoryAdapter ha;
+    private ArrayList<String> IDViajes = new ArrayList<>();
+    private ArrayList<History> historyList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         HistoryViewModel =
@@ -33,13 +36,31 @@ public class HistoryFragment extends Fragment {
         RecyclerView rv = (RecyclerView) root.findViewById(R.id.rv1);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         rv.setLayoutManager(llm);
-        List<History> histories;
-        histories = Repository.getHistories();
+        IDViajes = new ArrayList<>();
+        HistoryViewModel.getIDViajes().observe(this,
+                new Observer<ArrayList<String>>() {
+                    @Override
+                    public void onChanged(ArrayList<String> Viajes) {
+                        IDViajes = Viajes;
+                        HistoryViewModel.getTrips(IDViajes);
+                    }
+                });
+        HistoryViewModel.getTripIds();
 
-        ha = new HistoryAdapter(histories, Navigation.findNavController(getActivity(), R.id.nav_host_fragment));
+        HistoryViewModel.getTripList().observe(this,
+                new Observer<ArrayList<History>>() {
+                    @Override
+                    public void onChanged(ArrayList<History> histories) {
+                        historyList = histories;
+                        ha.setLista(historyList);
+                        ha.notifyDataSetChanged();
+                    }
+                });
+
+        HistoryViewModel.getTripList();
+
+        ha = new HistoryAdapter(historyList, Navigation.findNavController(getActivity(), R.id.nav_host_fragment));
         rv.setAdapter(ha);
         return root;
     }
-
-
 }
