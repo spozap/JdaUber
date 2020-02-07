@@ -3,6 +3,7 @@ package com.example.uberapp.ui.home;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +32,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements OnMapReadyCallback {
@@ -43,6 +51,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
 
     private static final int REQUEST_CODE = 101;
+    private final String G_KEY = "AIzaSyA22u5QBvoTQ4bSYuotFcm_4EQIySHmWVA";
 
     private static final String MAP_VIEW_BUNDLE_KEY = "MapViewBundleKey";
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -65,8 +74,11 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         btnTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                History h = new History("","","dummy data","dummy data");
-                homeViewModel.insertNewTrip(h);
+                GetRoute g = new GetRoute();
+                g.execute();
+
+                //History h = homeViewModel.getRoute("");
+                //homeViewModel.insertNewTrip(h);
             }
         });
 
@@ -164,5 +176,53 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     public void onLowMemory() {
         super.onLowMemory();
         mapView.onLowMemory();
+    }
+
+    public class GetRoute extends AsyncTask<String,String,String>{
+
+        String origin;
+        String destination;
+        @Override
+        protected String doInBackground(String... strings) {
+            origin = "41.414936, 2.202087";
+            destination = "41.505089, 2.116144";
+
+            String link = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+origin+"&destinations="+destination+"&departure_time=now&key="+G_KEY;
+            URL url;
+            HttpURLConnection connection;
+
+            try{
+                url = new URL(link);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.connect();
+
+                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) { // If the response is 200 (Connected) then read the result
+                    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    String linea = "";
+                    StringBuilder response = new StringBuilder();
+
+                    while ((linea = br.readLine()) != null){
+                        response.append(linea+"\n");
+                    }
+                    Log.d("JSON",response.toString());
+
+                    //Parsing the response to History object
+                    homeViewModel.getRoute(response.toString());
+
+                }
+            } catch (MalformedURLException e){
+                e.printStackTrace();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
     }
 }

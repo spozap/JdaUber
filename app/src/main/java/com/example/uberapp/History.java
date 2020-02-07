@@ -11,12 +11,14 @@ public class History {
     String UbicacionSalida;
     String UbicacionDestino;
     String FechaActual;
+    String km;
 
-    public History(String conductor , String pasajero , String UbiAct, String UbiDest) {
+    public History(String conductor , String pasajero , String UbiAct, String UbiDest,String km) {
         this.UbicacionDestino = UbiAct;
         this.UbicacionSalida = UbiDest;
         this.conductor = conductor;
         this.pasajero = pasajero;
+        this.km = km;
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
         this.FechaActual = dateFormat.format(date);
@@ -64,5 +66,13 @@ public class History {
 
     public void setConductor(String conductor) {
         this.conductor = conductor;
+    }
+
+    public String getKm() {
+        return km;
+    }
+
+    public void setKm(String km) {
+        this.km = km;
     }
 }
