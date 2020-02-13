@@ -21,6 +21,7 @@
     <string name="login">Accede</string>
     <string name="is_driver">Soy conductor</string>
     <string name="is_user">Soy usuario</string>
+    <string name="button_pay">Pagar viaje</string>
 
     <string name="from">Desde : </string>
     <string name="to">Hasta :</string>

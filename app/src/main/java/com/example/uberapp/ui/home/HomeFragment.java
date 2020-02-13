@@ -10,13 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
+import com.braintreepayments.*;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.braintreepayments.api.dropin.DropInRequest;
 import com.example.uberapp.History;
 import com.example.uberapp.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -44,7 +45,7 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
     private HomeViewModel homeViewModel;
-    private Button btnTrip;
+    private Button btnTrip , btnPay;
     private MapView mapView;
     private GoogleMap gMap;
     Location currentLocation;
@@ -54,7 +55,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     private final String G_KEY = "AIzaSyA22u5QBvoTQ4bSYuotFcm_4EQIySHmWVA";
 
     private static final String MAP_VIEW_BUNDLE_KEY = "MapViewBundleKey";
+    private int REQUEST_PAYMENT_CODE = 0;
     FusedLocationProviderClient fusedLocationProviderClient;
+
+    private static final String SANDBOX_TOKEN = "sandbox_hc8yr6t5_7w3btqbxqt3yd7j3";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
@@ -67,6 +71,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
             mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
         }
         btnTrip = root.findViewById(R.id.btnTrip);
+        btnPay = root.findViewById(R.id.btnPay);
         mapView = root.findViewById(R.id.map_container);
         mapView.onCreate(mapViewBundle);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
@@ -74,11 +79,22 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         btnTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GetRoute g = new GetRoute();
-                g.execute();
+
+
+                //GetRoute g = new GetRoute();
+                //g.execute();
 
                 //History h = homeViewModel.getRoute("");
                 //homeViewModel.insertNewTrip(h);
+            }
+        });
+
+        btnPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DropInRequest dropInRequest = new DropInRequest().
+                        clientToken(SANDBOX_TOKEN);
+                startActivityForResult(dropInRequest.getIntent(getActivity()),REQUEST_PAYMENT_CODE);
             }
         });
 
