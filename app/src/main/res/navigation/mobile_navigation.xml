@@ -42,4 +42,9 @@
         android:id="@+id/nav_receive_message"
         android:name="com.example.uberapp.receiveFragment"
         tools:layout="@layout/receive_message"/>
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.uberapp.profileFragment"
+        tools:layout="@layout/fragment_profile"/>
+
 </navigation>
