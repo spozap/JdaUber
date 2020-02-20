@@ -3,11 +3,10 @@ package com.example.uberapp;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -18,6 +17,15 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class profileViewModel extends ViewModel {
+
+    private MutableLiveData<Uri> profileImage;
+
+    public profileViewModel(){
+        profileImage = new MutableLiveData<>();
+    }
+
+    public MutableLiveData<Uri> getProfileImage(){ return profileImage; }
+
 
     private FirebaseAuth mAuth;
 
@@ -42,6 +50,28 @@ public class profileViewModel extends ViewModel {
             });
 
         }
+
+    }
+
+
+    public void downloadProfileImage(){
+
+        mAuth = FirebaseAuth.getInstance();
+        StorageReference mImageRef = FirebaseStorage.getInstance().getReference().child(mAuth.getUid());
+
+        mImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                profileImage.postValue(uri);
+            }
+        })
+
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("Storage","Error al descargar la imagen");
+            }
+        });
 
     }
 
