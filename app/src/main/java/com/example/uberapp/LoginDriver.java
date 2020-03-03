@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 
 public class LoginDriver extends AppCompatActivity {
@@ -32,7 +33,7 @@ public class LoginDriver extends AppCompatActivity {
                 String username = userDriver.getText().toString();
                 String password = passDriver.getText().toString();
                 loginDriverViewModel.loginDriverInFirebase(LoginDriver.this,
-                        username,password);
+                        username,password,getSupportFragmentManager());
             }
         });
 

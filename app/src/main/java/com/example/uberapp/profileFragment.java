@@ -20,8 +20,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-
 import static android.app.Activity.RESULT_OK;
 
 

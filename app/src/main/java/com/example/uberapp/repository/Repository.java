@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 
+import com.example.uberapp.Dialogs.LoginFailedDialog;
 import com.example.uberapp.History;
 import com.example.uberapp.MainActivity;
 import com.example.uberapp.Message;
@@ -83,7 +85,7 @@ public class Repository {
                 });
     }
 
-    public static void loginDriverInFirebase(Activity activity,String username,String password){
+    public static void loginDriverInFirebase(Activity activity,String username,String password,FragmentManager fm){
         mAuth = FirebaseAuth.getInstance();
         mAuth.signInWithEmailAndPassword(username,password)
                 .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
@@ -94,6 +96,7 @@ public class Repository {
                             Intent i = new Intent(activity.getBaseContext(),MainActivity.class);
                             activity.startActivity(i);
                         } else {
+                            showLoginFailedDialog(fm);
                             Log.w("Firebase","loginDriver:failure");
                         }
                     }
@@ -166,16 +169,12 @@ public class Repository {
             return false;
         }
     }
-    public static List<History> getHistories(){
-        List<History> histories = new ArrayList<>();
 
-        histories.add(new History("","","Calle San sebastián","La Maquinista",""));
-        histories.add(new History("","","Glories","Diagonal Mar",""));
-        histories.add(new History("","","Calle Gran de Sant Andreu","Heron City",""));
-        histories.add(new History("","","asdasdasdasdsa","asdadad",""));
-        histories.add(new History("","","fdgjfkdgjdfgdfl","sdlskjgskdj",""));
-        histories.add(new History("","","dfkdjfkjsdf","hgfdjhgjdfhghfjd",""));
 
-        return histories;
+    public static void showLoginFailedDialog(FragmentManager fm){
+
+        LoginFailedDialog loginFailedDialog = new LoginFailedDialog();
+        loginFailedDialog.show(fm,"Login failed");
+
     }
 }
