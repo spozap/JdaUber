@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_mobile_navigation"
+    app:startDestination="@id/sendFragment">
+
+    <fragment
+        android:id="@+id/sendFragment"
+        android:name="com.example.uberapp.sendFragment"
+        android:label="send_message"
+        tools:layout="@layout/send_message" />
+    <fragment
+        android:id="@+id/receiveFragment"
+        android:name="com.example.uberapp.receiveFragment"
+        android:label="receive_message"
+        tools:layout="@layout/receive_message" />
+</navigation>

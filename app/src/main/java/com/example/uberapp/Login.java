@@ -40,13 +40,8 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 String us = user.getText().toString();
                 String pa = pass.getText().toString();
-                boolean id = loginViewModel.checkIfLoginIsCorrect(us,pa);
-                if (id){
-                    Intent intent = new Intent(Login.this, MainActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(Login.this,"Usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show();
-                }
+                //boolean id = loginViewModel.checkIfLoginIsCorrect(us,pa);
+                loginViewModel.loginDriverInFirebase(Login.this,us,pa,getSupportFragmentManager());
             }
         });
     }

@@ -11,7 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.uberapp.Dialogs.LoginFailedDialog;
+import com.example.uberapp.DriverMainActivity;
 import com.example.uberapp.History;
+import com.example.uberapp.Login;
+import com.example.uberapp.LoginDriver;
 import com.example.uberapp.MainActivity;
 import com.example.uberapp.Message;
 import com.example.uberapp.databases.bbdd;
@@ -92,9 +95,15 @@ public class Repository {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Log.d("Firebase","loginDriver:success");
-                            Intent i = new Intent(activity.getBaseContext(),MainActivity.class);
-                            activity.startActivity(i);
+                            if (activity.getClass() == LoginDriver.class){
+                                Log.d("Firebase","loginUser:success");
+                                Intent i = new Intent(activity.getBaseContext(),DriverMainActivity.class);
+                                activity.startActivity(i);
+                            } else if (activity.getClass() == Login.class){
+                                Log.d("Firebase","loginUser:success");
+                                Intent i = new Intent(activity.getBaseContext(), MainActivity.class);
+                                activity.startActivity(i);
+                            }
                         } else {
                             showLoginFailedDialog(fm);
                             Log.w("Firebase","loginDriver:failure");
